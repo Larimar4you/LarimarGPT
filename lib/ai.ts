@@ -1,6 +1,6 @@
 // lib/ai.ts
-import { OpenAI } from "ai";
+import OpenAI from "openai";
 
 export const aiClient = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // твой ключ
+  apiKey: process.env.OPENAI_API_KEY!,
 });

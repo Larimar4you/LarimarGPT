@@ -2,18 +2,18 @@
 import { aiClient } from "@/lib/ai";
 
 export async function POST(req: Request) {
-  const { message } = await req.json();
+  const { message }: { message: string } = await req.json();
 
-  if (!message) {
+  if (!message)
     return new Response(JSON.stringify({ error: "No message provided" }), {
       status: 400,
     });
-  }
 
   try {
     const completion = await aiClient.chat.completions.create({
-      model: "llama3", // или gpt-4
+      model: "gpt-4.1", // updated model
       messages: [{ role: "user", content: message }],
+      max_tokens: 200,
     });
 
     return new Response(
